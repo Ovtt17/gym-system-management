@@ -6,7 +6,6 @@ interface ClientsTableProps {
 }
 
 const ClientsTable: React.FC<ClientsTableProps> = ({ clients }) => {
-  console.log(clients);
   return (
     <div className="overflow-x-auto mt-6">
       <table className="min-w-full bg-white border border-gray-200">
