@@ -29,7 +29,7 @@ const AddClient = () => {
 
   return (
     <div className="max-w-md mx-auto mt-8 bg-white p-6 rounded-lg shadow-md border border-gray-300">
-      <h1 className="text-2xl font-bold mb-4 text-gray-800">Create Client</h1>
+      <h1 className="text-2xl font-bold mb-4 text-gray-800">Crear Cliente</h1>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label className="block text-sm font-medium mb-1 text-gray-700" htmlFor="nombre">
