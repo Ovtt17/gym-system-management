@@ -3,6 +3,7 @@ import Clients from "../pages/Clients";
 import AddClient from "../components/client/AddClient";
 import ClientDetails from "../components/client/ClientDetails";
 import EditClient from "../components/client/EditClient";
+import Membresias from "../pages/Membresias";
 
 const AppRoutes = () => {
   const navigate = useNavigate();
@@ -13,6 +14,8 @@ const AppRoutes = () => {
       <Route path="/clients/new" element={<AddClient />} />
       <Route path="/clients/edit/:id" element={<EditClient />} />
       <Route path="/clients/details/:id" element={<ClientDetails onBack={() => navigate('/')} />} />
+
+      <Route path="/membership" element={<Membresias />} />
     </Routes>
   );
 }
