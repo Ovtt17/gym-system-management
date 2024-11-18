@@ -1,19 +1,40 @@
-import React from "react";
-import ClientsTable from "../components/ClientsTable";
-import AddClientButton from "../components/AddClientButton";
+import React, { useState } from "react";
+import AddClientButton from "../components/client/AddClientButton";
 import useGetClients from "../hooks/useGetClients";
+import SearchBar from "../components/SearchBar";
+import ClientCard from "../components/client/ClientCard";
 
 const Clients: React.FC = () => {
   const { clients } = useGetClients();
+  const [searchString, setSearchString] = useState("");
+
+  const filteredClients = clients.filter((client) =>
+    `${client.nombre} ${client.apellido}`
+      .toLowerCase()
+      .includes(searchString.toLowerCase())
+  );
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
-      <div className="max-w-7xl mx-auto bg-white shadow-md rounded-lg p-6">
-        <header className="flex items-center justify-between pb-6 border-b">
-          <h1 className="text-2xl font-bold text-gray-800">Clients</h1>
+      <div className="max-w-7xl mx-auto">
+        <h1 className="text-center text-2xl font-bold text-gray-800 mt-4">
+          CLIENTES
+        </h1>
+
+        <div className="flex flex-wrap justify-between items-center my-5 gap-4">
+          <SearchBar
+            searchString={searchString}
+            onSearchChange={(value) => setSearchString(value)}
+            onClear={() => setSearchString("")}
+          />
           <AddClientButton />
-        </header>
-        <ClientsTable clients={clients}/>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {filteredClients.map((client) => (
+            <ClientCard key={client.id} client={client} />
+          ))}
+        </div>
       </div>
     </div>
   );
