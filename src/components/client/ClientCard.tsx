@@ -1,12 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import { Cliente } from "../../models/clients";
 import { Link } from "react-router-dom";
 
 interface ClientCardProps {
   client: Cliente;
+  onDelete: (id: string) => void;
 }
 
-const ClientCard: React.FC<ClientCardProps> = ({ client }) => {
+const ClientCard: React.FC<ClientCardProps> = ({ client, onDelete }) => {
+  const [showConfirmDialog, setShowConfirmDialog] = useState(false);
+
+  const handleDelete = () => {
+    onDelete(client.id.toString());
+    setShowConfirmDialog(false);
+  };
   return (
     <div className="bg-white border-l-4 border-blue-500 shadow-sm rounded-md p-4">
       <h5 className="text-xl font-bold text-blue-600">
@@ -36,13 +43,36 @@ const ClientCard: React.FC<ClientCardProps> = ({ client }) => {
         >
           Detalles
         </Link>
-        <a
-          href="#"
+        <button
+          onClick={() => setShowConfirmDialog(true)}
           className="bg-red-500 text-white px-4 py-1 rounded text-sm shadow hover:bg-red-600"
         >
           Eliminar
-        </a>
+        </button>
       </div>
+
+      {showConfirmDialog && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+          <div className="bg-white p-6 rounded shadow-md">
+            <h3 className="text-lg font-bold mb-4">Confirmar Eliminación</h3>
+            <p>¿Estás seguro de que deseas eliminar este cliente?</p>
+            <div className="mt-4 flex justify-end space-x-3">
+              <button
+                onClick={handleDelete}
+                className="bg-red-500 text-white px-4 py-1 rounded text-sm shadow hover:bg-red-600"
+              >
+                Sí, eliminar
+              </button>
+              <button
+                onClick={() => setShowConfirmDialog(false)}
+                className="bg-gray-500 text-white px-4 py-1 rounded text-sm shadow hover:bg-gray-600"
+              >
+                Cancelar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

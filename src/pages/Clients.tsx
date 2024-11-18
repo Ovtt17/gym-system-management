@@ -3,6 +3,7 @@ import AddClientButton from "../components/client/AddClientButton";
 import useGetClients from "../hooks/useGetClients";
 import SearchBar from "../components/SearchBar";
 import ClientCard from "../components/client/ClientCard";
+import { deleteClient } from "../api/client";
 
 const Clients: React.FC = () => {
   const { clients } = useGetClients();
@@ -13,6 +14,13 @@ const Clients: React.FC = () => {
       .toLowerCase()
       .includes(searchString.toLowerCase())
   );
+
+  const handleClientDelete = (id: string) => {
+    deleteClient(id).then(() => {
+      alert("Cliente eliminado exitosamente");
+      window.location.reload();
+    });
+  };
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -32,7 +40,11 @@ const Clients: React.FC = () => {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
           {filteredClients.map((client) => (
-            <ClientCard key={client.id} client={client} />
+            <ClientCard
+              key={client.id}
+              client={client}
+              onDelete={handleClientDelete}
+            />
           ))}
         </div>
       </div>

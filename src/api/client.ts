@@ -76,7 +76,6 @@ export const deleteClient = async (id: string) => {
     if (!response.ok) {
       throw new Error(`Error deleting client with id ${id}`);
     }
-    return await response.json();
   } catch (error) {
     console.error(`Error deleting client with id ${id}:`, error);
     throw error;
