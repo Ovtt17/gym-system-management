@@ -2,7 +2,7 @@ export interface Cliente {
   id: number;
   nombre: string;
   apellido: string;
-  fechaNacimiento: Date;
+  fechaNacimiento: string;
   email: string;
   telefono: string;
   fechaRegistro: Date;

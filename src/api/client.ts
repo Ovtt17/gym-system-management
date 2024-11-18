@@ -30,7 +30,7 @@ export const getClientById = async (id: string): Promise<Cliente> => {
   }
 };
 
-export const createClient = async (clientData: Cliente) => {
+export const createClient = async (clientData: Omit<Cliente, "id">) => {
   try {
     const response = await fetch(API_URL, {
       method: 'POST',
@@ -62,8 +62,6 @@ export const updateClient = async (id: string, clientData: Cliente) => {
     if (!response.ok) {
       throw new Error(`Error updating client with id ${id}`);
     }
-    const client: Cliente = await response.json();
-    return client;
   } catch (error) {
     console.error(`Error updating client with id ${id}:`, error);
     throw error;
@@ -78,7 +76,6 @@ export const deleteClient = async (id: string) => {
     if (!response.ok) {
       throw new Error(`Error deleting client with id ${id}`);
     }
-    return await response.json();
   } catch (error) {
     console.error(`Error deleting client with id ${id}:`, error);
     throw error;
