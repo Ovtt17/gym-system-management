@@ -1,5 +1,6 @@
 import React from "react";
 import { Cliente } from "../../models/clients";
+import { Link } from "react-router-dom";
 
 interface ClientCardProps {
   client: Cliente;
@@ -23,18 +24,18 @@ const ClientCard: React.FC<ClientCardProps> = ({ client }) => {
         {client.fechaRegistro.toString()}
       </p>
       <div className="mt-4 flex space-x-3">
-        <a
-          href="#"
+        <Link
+          to={`/clients/edit/${client.id}`}
           className="bg-yellow-500 text-white px-4 py-1 rounded text-sm shadow hover:bg-yellow-600"
         >
           Editar
-        </a>
-        <a
-          href="#"
+        </Link>
+        <Link
+          to={`/clients/details/${client.id}`}
           className="bg-blue-500 text-white px-4 py-1 rounded text-sm shadow hover:bg-blue-600"
         >
           Detalles
-        </a>
+        </Link>
         <a
           href="#"
           className="bg-red-500 text-white px-4 py-1 rounded text-sm shadow hover:bg-red-600"
