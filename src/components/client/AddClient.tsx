@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Cliente } from "../../models/clients";
 import { createClient } from "../../api/client";
+import { useNavigate } from "react-router-dom";
 
 const AddClient = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<Omit<Cliente, "id">>({
     nombre: "",
     apellido: "",
@@ -24,7 +26,10 @@ const AddClient = () => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    createClient(formData);
+    createClient(formData).then(() => {
+      alert("Cliente creado exitosamente");
+      navigate("/");
+    });
   };
 
   return (
