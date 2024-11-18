@@ -30,7 +30,7 @@ export const getClientById = async (id: string): Promise<Cliente> => {
   }
 };
 
-export const createClient = async (clientData: Cliente) => {
+export const createClient = async (clientData: Omit<Cliente, "id">) => {
   try {
     const response = await fetch(API_URL, {
       method: 'POST',
