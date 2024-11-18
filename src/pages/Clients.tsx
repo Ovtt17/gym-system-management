@@ -27,7 +27,7 @@ const Clients: React.FC = () => {
             onSearchChange={(value) => setSearchString(value)}
             onClear={() => setSearchString("")}
           />
-          <AddClientButton />
+          <AddClientButton redirectionUrl="/clients/new" />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
