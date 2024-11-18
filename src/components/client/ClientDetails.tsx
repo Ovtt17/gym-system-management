@@ -10,7 +10,7 @@ const ClientDetails: React.FC<ClientDetailsProps> = ({ onBack }) => {
   const { client, loading } = useGetClientDetails(id as string);
 
   if (loading) {
-    return <p>Cargando los detalles del cliente...</p>;
+    return <p className="text-green-500 flex items-center justify-center">Cargando los detalles del cliente...</p>;
   }
 
   return (
