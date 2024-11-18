@@ -62,8 +62,6 @@ export const updateClient = async (id: string, clientData: Cliente) => {
     if (!response.ok) {
       throw new Error(`Error updating client with id ${id}`);
     }
-    const client: Cliente = await response.json();
-    return client;
   } catch (error) {
     console.error(`Error updating client with id ${id}:`, error);
     throw error;
