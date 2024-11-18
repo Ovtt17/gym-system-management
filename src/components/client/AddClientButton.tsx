@@ -1,17 +1,20 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const AddClientButton: React.FC = () => {
-  const handleClick = () => {
-    alert("Add client functionality goes here!");
-  };
+interface AddClientButtonProps {
+  redirectionUrl: string;
+}
+
+const AddClientButton: React.FC<AddClientButtonProps> = ({ redirectionUrl }) => {
 
   return (
-    <button
-      onClick={handleClick}
-      className="bg-blue-600 text-white px-4 py-2 rounded-md shadow hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300"
-    >
-      Add Client
-    </button>
+    <Link to={redirectionUrl}>
+      <button
+        className="bg-blue-600 text-white px-4 py-2 rounded-md shadow hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300"
+      >
+        Add Client
+      </button>
+    </Link>
   );
 };
 
