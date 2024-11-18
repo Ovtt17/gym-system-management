@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AddClientButton from "../components/client/AddClientButton";
+import AddButton from "../components/AddButton";
 import useGetClients from "../hooks/useGetClients";
 import SearchBar from "../components/SearchBar";
 import ClientCard from "../components/client/ClientCard";
@@ -35,7 +35,10 @@ const Clients: React.FC = () => {
             onSearchChange={(value) => setSearchString(value)}
             onClear={() => setSearchString("")}
           />
-          <AddClientButton redirectionUrl="/clients/new" />
+          <AddButton
+            redirectionUrl="/clients/new"
+            entityName="Cliente"
+          />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

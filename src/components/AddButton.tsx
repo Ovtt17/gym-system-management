@@ -1,21 +1,22 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-interface AddClientButtonProps {
+interface AddButtonProps {
   redirectionUrl: string;
+  entityName: string;
 }
 
-const AddClientButton: React.FC<AddClientButtonProps> = ({ redirectionUrl }) => {
+const AddButton: React.FC<AddButtonProps> = ({ redirectionUrl, entityName }) => {
 
   return (
     <Link to={redirectionUrl}>
       <button
         className="bg-blue-600 text-white px-4 py-2 rounded-md shadow hover:bg-blue-700 focus:outline-none focus:ring focus:ring-blue-300"
       >
-        Agregar Cliente
+        Agregar {entityName}
       </button>
     </Link>
   );
 };
 
-export default AddClientButton;
+export default AddButton;
